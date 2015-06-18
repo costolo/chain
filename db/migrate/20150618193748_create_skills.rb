@@ -4,6 +4,9 @@ class CreateSkills < ActiveRecord::Migration
       t.string :title
       t.integer :current_streak
       t.integer :longest_streak
+      t.references :user
+
+      t.timestamps
     end
   end
 end
