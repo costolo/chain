@@ -1,6 +1,9 @@
 <h1>skills</h1>
 <p><%= User.first.name %></p>
-<p><%= User.first.skills.first.title %></p>
+
+<% User.first.skills.each do |skill| %>
+  <%= skill.title %><br>
+<% end %>
 
 <%= form_for @new_skill do |f| %>
   <%= f.text_field :title %>
