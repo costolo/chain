@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20150618193748) do
 
   create_table "skills", force: :cascade do |t|
     t.string   "title"
-    t.integer  "current_streak"
-    t.integer  "longest_streak"
+    t.integer  "current_streak", default: 1
+    t.integer  "longest_streak", default: 1
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
