@@ -11,4 +11,10 @@ class SkillsController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def skills_params
+    params.require(:skill).permit(:title, :current_streak, :longest_streak, :user_id)
+  end
 end
