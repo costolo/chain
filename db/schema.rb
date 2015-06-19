@@ -17,12 +17,18 @@ ActiveRecord::Schema.define(version: 20150618193748) do
   enable_extension "plpgsql"
 
   create_table "skills", force: :cascade do |t|
-    t.string  "title"
-    t.integer "current_streak"
-    t.integer "longest_streak"
+    t.string   "title"
+    t.integer  "current_streak"
+    t.integer  "longest_streak"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
