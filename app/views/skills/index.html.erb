@@ -2,4 +2,7 @@
 <p><%= User.first.name %></p>
 <p><%= User.first.skills.first.title %></p>
 
-<%= render "new" %>
+<%= form_for @new_skill do |f| %>
+  <%= f.text_field :title %>
+  <%= f.submit "add" %>
+<% end %>
