@@ -1,11 +1,17 @@
 <h1>skills</h1>
 <p><%= current_user.name %></p>
 
-<% current_user.skills.each do |skill| %>
-  <%= skill.title %><br>
-<% end %>
+<div class="skills">
+  <% current_user.skills.each do |skill| %>
+    <%= skill.title %><br>
+  <% end %>
+</div>
 
 <%= form_for @new_skill do |f| %>
   <%= f.text_field :title %>
   <%= f.submit "add" %>
 <% end %>
+
+<script>
+  addSkill();
+</script>
