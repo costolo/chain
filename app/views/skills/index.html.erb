@@ -1,7 +1,7 @@
 <h1>skills</h1>
-<p><%= User.first.name %></p>
+<p><%= current_user.name %></p>
 
-<% User.first.skills.each do |skill| %>
+<% current_user.skills.each do |skill| %>
   <%= skill.title %><br>
 <% end %>
 
