@@ -8,6 +8,13 @@ class SkillsController < ApplicationController
   end
 
   def create
+    skill = current_user.skills.build(skills_params)
+    if skill.save
+      respond_to do |format|
+        format.html {redirect_to skill_path(skill)}
+        format.json {render json: skill.as_json({only: :title})}
+      end
+    end
   end
 
   def destroy
