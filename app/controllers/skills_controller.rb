@@ -1,5 +1,6 @@
 class SkillsController < ApplicationController
   def index
+    session[:user_id] = User.first.id
     @new_skill = Skill.new
   end
 
