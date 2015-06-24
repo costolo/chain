@@ -7,7 +7,6 @@ describe Skill do
   end
   it "is invalid without a title" do
     skill = Skill.new(title: nil)
-    #expect(skill.valid?).to be false
     expect(skill.errors[:title]).not_to include("can't be blank")
   end
 end
