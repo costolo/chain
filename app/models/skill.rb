@@ -4,6 +4,12 @@ class Skill < ActiveRecord::Base
   before_save :set_refreshed_at
 
   def set_refreshed_at
-    self.new_record? ? self.refreshed_at = self.created_at.to_i : self
+    if self.new_record?
+      self.refreshed_at = Time.now.to_i
+    end
+  end
+
+  def update_refreshed_at
+    self.refreshed_at = Time.now.to_i
   end
 end
