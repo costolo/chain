@@ -1,15 +1,20 @@
 class Skill < ActiveRecord::Base
   belongs_to :user
   validates :title, presence: true
-  before_save :set_refreshed_at
+  before_save :set_expiration_time
 
-  def set_refreshed_at
+  def set_expiration_time
     if self.new_record?
-      self.refreshed_at = Time.now.to_i
+      self.expiration_time = Time.now.to_i + 86400
     end
   end
 
-  def update_refreshed_at
-    self.refreshed_at = Time.now.to_i
+  def update_expiration_time
+    self.expiration_time = Time.now.to_i + 86400
+  end
+
+  def time_remaining
+    sec_remaining = self.expiration_time - Time.now.to_i
+    Time.at(sec_remaining).utc.strftime("%H:%M:%S")
   end
 end
