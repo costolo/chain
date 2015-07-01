@@ -15,6 +15,10 @@ class Skill < ActiveRecord::Base
 
   def time_remaining
     sec_remaining = self.expiration_time - Time.now.to_i
-    Time.at(sec_remaining).utc.strftime("%H:%M:%S")
+    if sec_remaining > 0
+      Time.at(sec_remaining).utc.strftime("%H:%M:%S")
+    else
+      "chain broken"
+    end
   end
 end
