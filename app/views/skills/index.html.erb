@@ -1,9 +1,8 @@
-<h1>skills</h1>
-<p><%= current_user.name %></p>
+<h1><%= current_user.name %></h1>
 
 <div class="skills">
   <% current_user.skills.each do |skill| %>
-    <%= skill.title %><br>
+    <p><%= skill.title %> - Time remaining: <%= skill.time_remaining %></p>
   <% end %>
 </div>
 
