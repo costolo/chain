@@ -17,10 +17,10 @@ ActiveRecord::Schema.define(version: 20150618193748) do
   enable_extension "plpgsql"
 
   create_table "skills", force: :cascade do |t|
-    t.string   "title",                      null: false
-    t.integer  "current_streak", default: 1
-    t.integer  "longest_streak", default: 1
-    t.integer  "refreshed_at"
+    t.string   "title",                       null: false
+    t.integer  "current_streak",  default: 1
+    t.integer  "longest_streak",  default: 1
+    t.integer  "expiration_time"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

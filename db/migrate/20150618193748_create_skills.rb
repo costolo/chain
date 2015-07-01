@@ -4,7 +4,7 @@ class CreateSkills < ActiveRecord::Migration
       t.string :title, null: false
       t.integer :current_streak, default: 1
       t.integer :longest_streak, default: 1
-      t.integer :refreshed_at
+      t.integer :expiration_time
 
       t.references :user
 
