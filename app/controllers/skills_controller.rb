@@ -17,6 +17,9 @@ class SkillsController < ApplicationController
     end
   end
 
+  def refresh
+  end
+
   def destroy
   end
 
