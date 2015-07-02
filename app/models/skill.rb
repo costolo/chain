@@ -9,8 +9,9 @@ class Skill < ActiveRecord::Base
     end
   end
 
-  def update_expiration_time
+  def refresh_expiration_time
     self.expiration_time = Time.now.to_i + 86400
+    self.save
   end
 
   def time_remaining
