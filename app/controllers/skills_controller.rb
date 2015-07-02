@@ -18,6 +18,9 @@ class SkillsController < ApplicationController
   end
 
   def refresh
+    skill = Skill.find(params[:format])
+    skill.refresh_expiration_time
+    redirect_to root_path
   end
 
   def destroy
