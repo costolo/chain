@@ -9,6 +9,11 @@ class Skill < ActiveRecord::Base
     end
   end
 
+  def end_current_streak
+    self.current_streak = 0
+    self.save
+  end
+
   def refresh_expiration_time
     self.expiration_time = Time.now.to_i + 86400
     self.save
