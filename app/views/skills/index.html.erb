@@ -2,7 +2,8 @@
 
 <div class="skills">
   <% current_user.skills.each do |skill| %>
-    <p><%= skill.title %> - <%= skill.time_remaining %> - <%= link_to 'Refresh', refresh_path(skill) %></p>
+    <p><%= skill.title %> - <%= skill.time_remaining %> - <%= link_to 'Refresh', refresh_path(skill) %> - 
+    Current streak: <%= skill.current_streak %></p>
   <% end %>
 </div>
 
