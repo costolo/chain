@@ -1,18 +1,33 @@
 require 'rails_helper'
 
 describe Skill do
+  let(:valid_skill) { Skill.create(title: "valid skill") }
+  let(:invalid_skill) { Skill.create(title: "invalid skill") }
+
   it "is valid with a title" do
-    skill = Skill.new(title: "juggling")
-    expect(skill.valid?).to be true
+    expect(valid_skill.valid?).to be true
   end
 
   it "is invalid without a title" do
-    skill = Skill.new(title: nil)
-    expect(skill.errors[:title]).not_to include("can't be blank")
+    expect(invalid_skill.errors[:title]).not_to include("can't be blank")
   end
 
-  it "sets refreshed_at to the current epoch time upon record creation" do
-    skill = Skill.create(title: "hello there")
-    expect(skill.refreshed_at).to eq Time.now.to_i
+  #24 hours in seconds is 86400
+  it "sets expiration_time to 24 hours from the current epoch time" do
+    expect(valid_skill.expiration_time).to eq Time.now.to_i + 86400
+  end
+
+  it "is initialized with a current_streak of 1" do
+    expect(valid_skill.current_streak).to eq 1
+  end
+
+  it "can reset the current streak to 0" do
+    valid_skill.end_current_streak
+    expect(valid_skill.current_streak).to eq 0
+  end
+
+  it "can give the number of seconds remaining after creation" do
+    wait 5
+    expect(valid_skill.time_remaining).to eq false 
   end
 end
