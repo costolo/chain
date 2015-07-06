@@ -10,7 +10,8 @@ function addSkill() {
         type: "post",
         data: $target.serialize()
       }).done(function (response) {
-        $('.skills').append(response.title + " - Time remaining: 24:00:00" + "<br>");
+        $('.skills').append(response.title + " - Time remaining: 24:00:00" + "<br>" + 
+          "<br>");
         $target[0][2].value = "";
       });
     }
