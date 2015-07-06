@@ -35,6 +35,10 @@ class Skill < ActiveRecord::Base
     end
   end
 
+  def expiration_date
+    Time.at(self.expiration_time).strftime("%Y/%m/%d %H:%M:%S")
+  end
+
   def time_remaining_to_s(sec_remaining)
     "Time remaining: #{Time.at(sec_remaining).utc.strftime("%H:%M:%S")}"
   end
