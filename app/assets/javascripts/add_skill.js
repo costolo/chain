@@ -2,7 +2,6 @@ function addSkill() {
   $("#new_skill").on("submit", function (event) {
     event.preventDefault();
     var $target = $(event.target);
-    console.log($target);
     if ($('#skill_title').val() === "") {
       alert("No skill specified");
     } else {
