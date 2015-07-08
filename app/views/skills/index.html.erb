@@ -2,9 +2,13 @@
 
 <div class="skills">
   <% current_user.skills.each do |skill| %>
-    <%= skill.title + " - " + "Current streak: " + skill.current_streak.to_s + " - " +
-    "Time remaining " %>
-    <%= content_tag(:span, :"data-countdown" => skill.expiration_date) {} %>
+    <%= skill.title + " - " + "Current streak: " + skill.current_streak.to_s + " - "%>
+    <% if skill.time_remaining? %>
+      Time remaining: 
+      <%= content_tag(:span, :"data-countdown" => skill.expiration_date) {} %>
+    <% else %>
+      <%= skill.end_current_streak %>
+    <% end %>
     <%= link_to('Refresh', refresh_path(skill)) %>
     <br>
   <% end %>
