@@ -26,13 +26,9 @@ class Skill < ActiveRecord::Base
     self.save
   end
 
-  def time_remaining
+  def time_remaining?
     sec_remaining = self.expiration_time - Time.now.to_i
-    if sec_remaining > 0
-      time_remaining_to_s(sec_remaining)
-    else
-      self.end_current_streak
-    end
+    sec_remaining > 0 ? true : false
   end
 
   def expiration_date
