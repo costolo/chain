@@ -23,6 +23,7 @@ class Skill < ActiveRecord::Base
 
   def increment_current_streak
     self.current_streak += 1
+    self.longest_streak = self.current_streak if self.current_streak > self.longest_streak
     self.save
   end
 
