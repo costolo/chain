@@ -3,6 +3,7 @@ require 'rails_helper'
 describe Skill do
   let(:valid_skill) { Skill.create(title: "valid skill") }
   let(:invalid_skill) { Skill.create(title: "invalid skill") }
+  let(:streak_test) { Skill.create(title: "testing", longest_streak: 7)}
 
   it "is valid with a title" do
     expect(valid_skill.valid?).to be true
@@ -24,6 +25,11 @@ describe Skill do
   it "can reset the current streak to 0" do
     valid_skill.end_current_streak
     expect(valid_skill.current_streak).to eq 0
+  end
+
+  it "updates the longest streak if the current streak becomes higher" do
+    7.times { streak_test.increment_current_streak }
+    expect(streak_test.longest_streak).to eq 8
   end
 
   xit "can give the number of seconds remaining after creation" do
