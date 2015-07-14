@@ -1,7 +1,7 @@
-<h1><%= current_user.name %></h1>
+<h1><%= User.first.name %></h1>
 
 <div class="skills">
-  <% current_user.skills.each do |skill| %>
+  <% User.first.skills.each do |skill| %>
     <%= skill.title + " - " + "Current streak: " + skill.current_streak.to_s + " - "%>
     <% if skill.time_remaining? %>
       Time remaining: 
