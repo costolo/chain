@@ -26,6 +26,7 @@ gem 'rspec-rails'
 
 gem 'bourbon'
 gem 'neat'
+gem 'devise'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
