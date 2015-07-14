@@ -7,7 +7,7 @@ class SkillsController < ApplicationController
   end
 
   def create
-    skill = User.first.skills.build(skills_params)
+    skill = current_user.skills.build(skills_params)
     if skill.save
       respond_to do |format|
         format.html {redirect_to skill_path(skill)}
