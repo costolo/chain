@@ -1,22 +1,28 @@
-<h1><%= User.first.name %></h1>
+<% if user_signed_in? %>
+  <h1><%= current_user.name %></h1>
 
-<div class="skills">
-  <% User.first.skills.each do |skill| %>
-    <%= skill.title + " - " + "Current streak: " + skill.current_streak.to_s + " - "%>
-    <% if skill.time_remaining? %>
-      Time remaining: 
-      <%= content_tag(:span, :"data-countdown" => skill.expiration_date) {} %>
-    <% else %>
-      <%= skill.end_current_streak %>
+  <p><%= link_to "Sign out", destroy_user_session_path, method: :delete %></p>
+
+  <div class="skills">
+    <% current_user.skills.each do |skill| %>
+      <%= skill.title + " - " + "Current streak: " + skill.current_streak.to_s + " - "%>
+      <% if skill.time_remaining? %>
+        Time remaining: 
+        <%= content_tag(:span, :"data-countdown" => skill.expiration_date) {} %>
+      <% else %>
+        <%= skill.end_current_streak %>
+      <% end %>
+      <%= link_to('Refresh', refresh_path(skill)) %>
+      <br>
     <% end %>
-    <%= link_to('Refresh', refresh_path(skill)) %>
-    <br>
-  <% end %>
-</div>
+  </div>
 
-<%= form_for @new_skill do |f| %>
-  <%= f.text_field :title %>
-  <%= f.submit "add" %>
+  <%= form_for @new_skill do |f| %>
+    <%= f.text_field :title %>
+    <%= f.submit "add" %>
+  <% end %>
+<% else %>
+  <%= link_to "Sign in or sign up", new_user_session_path %>
 <% end %>
 
 <script>
