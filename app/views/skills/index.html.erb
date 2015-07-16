@@ -5,20 +5,28 @@
 
   <div class="vertical-tabs-container">
     <div class="vertical-tabs">
-      <% current_user.skills.each do |skill| %>
-        <a href="javascript:void(0)" class="js-vertical-tab vertical-tab" rel="<%= skill.id %>"><%= skill.title %></a>
+      <% current_user.skills.order(:id).each do |skill| %>
+        <a href="javascript:void(0)" class="js-vertical-tab vertical-tab" rel="<%= skill.title.gsub(" ", "-") %>"><%= skill.title %></a>
       <% end %>
     </div>
 
     <div class="vertical-tab-content-container">
       <% current_user.skills.each do |skill| %>
-        <a href="" class="js-vertical-tab-accordion-heading vertical-tab-accordion-heading is-active" rel="<%= skill.id %>"><%= skill.title %></a>
-        <div id="<%= skill.id %>" class="js-vertical-tab-content vertical-tab-content">
-          <%= content_tag(:span, :"data-countdown" => skill.expiration_date) {} %>
+        <a href="" class="js-vertical-tab-accordion-heading vertical-tab-accordion-heading is-active" rel="<%= skill.title.gsub(" ", "-") %>"><%= skill.title %></a>
+        <div id="<%= skill.title.gsub(" ", "-") %>" class="js-vertical-tab-content vertical-tab-content">
+          <%= "Current streak: " + skill.current_streak.to_s %><br><br>
+          <%= "Longest streak: " + skill.longest_streak.to_s %><br><br>
+          <% if skill.time_remaining? %>
+            Time remaining: 
+            <%= content_tag(:span, :"data-countdown" => skill.expiration_date) {} %>
+          <% else %>
+            <%= skill.end_current_streak %>
+          <% end %>
+          <%= link_to('Refresh', refresh_path(skill)) %>
         </div>
       <% end %>
     </div>
-</div>
+  </div>
 
 
   <%= form_for @new_skill do |f| %>
