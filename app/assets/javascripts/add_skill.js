@@ -10,8 +10,11 @@ function addSkill() {
         type: "post",
         data: $target.serialize()
       }).done(function (response) {
-        $('.skills').append(response.title + " - Time remaining: 24:00:00" + "<br>" + 
-          "<br>");
+        $('.vertical-tabs').append(
+          "<a href='javascript:void(0)' class='js-vertical-tab vertical-tab' rel='" + 
+          response.title.replace(" ", "-") + "'>" + response.title + "</a>"
+        )
+        console.log(response)
         $target[0][2].value = "";
       });
     }
