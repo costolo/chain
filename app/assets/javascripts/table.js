@@ -1,8 +1,7 @@
 table = function () {
-  // $(".js-vertical-tab-content").hide();
-  // $(".js-vertical-tab-content:first").show();
+  $(".js-vertical-tab-content").hide();
+  $(".js-vertical-tab-content:first").show();
 
-  /* if in tab mode */
   $(".js-vertical-tab").click(function(event) {
     event.preventDefault();
 
