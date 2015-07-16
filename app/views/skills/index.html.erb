@@ -3,28 +3,23 @@
 
   <p><%= link_to "Sign out", destroy_user_session_path, method: :delete %></p>
 
-  <div class="skills">
-    <% current_user.skills.each do |skill| %>
-      <div class="hover-tile-outer">
-        <div class="hover-tile-container">
-          <div class="hover-tile hover-tile-visible"></div>
-          <div class="hover-tile hover-tile-hidden">
-            <h4><%= skill.title %></h4>
-            <%= "Current streak: " + skill.current_streak.to_s %>
-            <br />
-            <% if skill.time_remaining? %>
-              Time remaining: 
-              <%= content_tag(:span, :"data-countdown" => skill.expiration_date) {} %>
-              <br />
-            <% else %>
-              <%= skill.end_current_streak %>
-            <% end %>
-            <%= link_to('Refresh', refresh_path(skill)) %>
-          </div>
+  <div class="vertical-tabs-container">
+    <div class="vertical-tabs">
+      <% current_user.skills.each do |skill| %>
+        <a href="javascript:void(0)" class="js-vertical-tab vertical-tab" rel="<%= skill.id %>"><%= skill.title %></a>
+      <% end %>
+    </div>
+
+    <div class="vertical-tab-content-container">
+      <% current_user.skills.each do |skill| %>
+        <a href="" class="js-vertical-tab-accordion-heading vertical-tab-accordion-heading is-active" rel="<%= skill.id %>"><%= skill.title %></a>
+        <div id="<%= skill.id %>" class="js-vertical-tab-content vertical-tab-content">
+          <%= content_tag(:span, :"data-countdown" => skill.expiration_date) {} %>
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+</div>
+
 
   <%= form_for @new_skill do |f| %>
     <%= f.text_field :title %>
