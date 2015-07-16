@@ -1,6 +1,7 @@
 class SkillsController < ApplicationController
   def index
     @new_skill = Skill.new
+    @skills = current_user.skills.order(:id)
   end
 
   def new

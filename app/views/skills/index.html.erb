@@ -5,13 +5,18 @@
 
   <div class="vertical-tabs-container">
     <div class="vertical-tabs">
-      <% current_user.skills.order(:id).each do |skill| %>
-        <a href="javascript:void(0)" class="js-vertical-tab vertical-tab" rel="<%= skill.title.gsub(" ", "-") %>"><%= skill.title %></a>
+      <% @skills.each do |skill| %>
+        <% if @first_link %>
+          <a href="javascript:void(0)" class="js-vertical-tab vertical-tab is-active" rel="<%= skill.title.gsub(" ", "-") %>"><%= skill.title %></a>
+          <% @first_link = false %>
+        <% else %>
+          <a href="javascript:void(0)" class="js-vertical-tab vertical-tab" rel="<%= skill.title.gsub(" ", "-") %>"><%= skill.title %></a>
+        <% end %>
       <% end %>
     </div>
 
     <div class="vertical-tab-content-container">
-      <% current_user.skills.each do |skill| %>
+      <% @skills.each do |skill| %>
         <a href="" class="js-vertical-tab-accordion-heading vertical-tab-accordion-heading is-active" rel="<%= skill.title.gsub(" ", "-") %>"><%= skill.title %></a>
         <div id="<%= skill.title.gsub(" ", "-") %>" class="js-vertical-tab-content vertical-tab-content">
           <%= "Current streak: " + skill.current_streak.to_s %><br><br>
