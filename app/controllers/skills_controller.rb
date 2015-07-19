@@ -1,7 +1,7 @@
 class SkillsController < ApplicationController
   def index
     @new_skill = Skill.new
-    @skills = current_user.skills.order(:id)
+    @skills = current_user.skills.order(:id) if user_signed_in?
     @first_link = true
   end
 
