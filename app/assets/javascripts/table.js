@@ -1,4 +1,4 @@
-table = function () {
+function table () {
   $(".js-vertical-tab-content").hide();
   $(".js-vertical-tab-content:first").show();
 
