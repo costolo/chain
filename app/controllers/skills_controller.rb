@@ -13,7 +13,7 @@ class SkillsController < ApplicationController
     if skill.save
       respond_to do |format|
         format.html {redirect_to skill_path(skill)}
-        format.json {render json: skill.as_json({only: :title, :current_streak, :longest_streak})}
+        format.json {render json: skill.as_json({only: [:title, :current_streak, :longest_streak, :id]})}
       end
     end
   end
