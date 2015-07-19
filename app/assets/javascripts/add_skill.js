@@ -1,4 +1,4 @@
-function addSkill() {
+function addSkill () {
   $("#new_skill").on("submit", function (event) {
     event.preventDefault();
     var $target = $(event.target);
