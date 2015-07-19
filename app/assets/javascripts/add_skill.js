@@ -10,27 +10,67 @@ function addSkill() {
         type: "post",
         data: $target.serialize()
       }).done(function (response) {
-        $('.vertical-tabs').append(formatVerticalTabs(response))
+        $('.vertical-tabs').append(formatVerticalTabs(response));
+        $('.vertical-tab-content-container').append(formatVerticalTabsContentLink(response));
+        $('.skills').append(formatVerticalTabsContentDiv(response));
+        $("a[rel=" + response.id.toString() + "]").click();
         $('.vertical-tabs').animate({ scrollTop: $(document).height() }, "slow");
         $target[0][2].value = "";
+        countdown();
       });
     }
   });
 }
 
-function formatVerticalTabs (skill) {
-  return "<a href='javascript:void(0)' class='js-vertical-tab vertical-tab' rel='" + 
-          skill.title.replace(" ", "-") + "'>" + skill.title + "</a>";
+function formatCurrentDateTime(date){
+  var year = date.getFullYear().toString();
+  var month = (date.getMonth() + 1).toString();
+  var day = (date.getDate() + 1).toString();
+  var hours = date.getHours().toString();
+  var minutes = date.getMinutes().toString();
+  var seconds = date.getSeconds().toString();
+
+  if (parseInt(month, 10) < 10) {
+    month = "0" + month
+  }
+
+  if (parseInt(day, 10) < 10) {
+    day = "0" + day
+  }
+
+  if (parseInt(hours, 10) < 10) {
+    hours = "0" + hours
+  }
+
+  if (parseInt(minutes, 10) < 10) {
+    minutes = "0" + minutes
+  }
+
+  if (parseInt(seconds, 10) < 10) {
+    seconds = "0" + seconds
+  }
+
+  return year + "/" + month + "/" + day + " " + hours + ":" + minutes + ":" + seconds;
 }
 
-// function formatVerticalTabsContentLink (skill) {
-//   return "<a href='' class='js-vertical-tab-accordion-heading vertical-tab-accordion-heading is-active' rel='" + 
-//   skill.title.replace(" ", "-") + "'>" + skill.title + "</a>";
-// }
+function formatVerticalTabs (skill) {
+  return "<a href='javascript:void(0)' class='js-vertical-tab vertical-tab' rel='" + 
+          skill.id.toString() + "'>" + skill.title + "</a>";
+}
 
-// function formatVerticalTabsContentDiv (skill) {
-//   return <div id="<%= skill.title.gsub(" ", "-") %>" class="js-vertical-tab-content vertical-tab-content">
-//           <%= "Current streak: " + skill.current_streak.to_s %><br><br>
-//           <%= "Longest streak: " + skill.longest_streak.to_s %><br><br>
-//           <span data-countdown="TIME.NOW IN Y/M/D H:M:S"></span>;
-// }
+function formatVerticalTabsContentLink (skill) {
+  return "<a href='' class='js-vertical-tab-accordion-heading vertical-tab-accordion-heading is-active' rel='" + 
+  skill.id.toString() + "'>" + skill.title + "</a>";
+}
+
+function formatVerticalTabsContentDiv (skill) {
+  var date = new Date;
+  return "<div id='" + skill.id.toString() + "' class='js-vertical-tab-content vertical-tab-content'>" +
+            "Current streak: " + skill.current_streak.toString() + "<br><br>" +
+            "Longest streak: " + skill.longest_streak.toString() + "<br><br>" +
+            "<span data-countdown='" + formatCurrentDateTime(date) + "'></span></div>";
+}
+
+
+
+
