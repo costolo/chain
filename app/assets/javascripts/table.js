@@ -2,7 +2,7 @@ function table () {
   $(".js-vertical-tab-content").hide();
   $(".js-vertical-tab-content:first").show();
 
-  $(".js-vertical-tab").click(function(event) {
+  $(".js-vertical-tab").click(function (event) {
     event.preventDefault();
 
     $(".js-vertical-tab-content").hide();

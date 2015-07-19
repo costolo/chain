@@ -23,7 +23,7 @@ function addSkill () {
   });
 }
 
-function formatCurrentDateTime(date){
+function formatCurrentDateTime (date) {
   var year = date.getFullYear().toString();
   var month = (date.getMonth() + 1).toString();
   var day = (date.getDate() + 1).toString();
