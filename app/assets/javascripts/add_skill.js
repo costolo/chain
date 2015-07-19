@@ -12,7 +12,8 @@ function addSkill() {
       }).done(function (response) {
         $('.vertical-tabs').append(formatVerticalTabs(response));
         $('.vertical-tab-content-container').append(formatVerticalTabsContentLink(response));
-        $('.skills').append(formatVerticalTabsContentDiv(response));
+        $('.vertical-tab-content-container').append(formatVerticalTabsContentDiv(response));
+        table();
         $("a[rel=" + response.id.toString() + "]").click();
         $('.vertical-tabs').animate({ scrollTop: $(document).height() }, "slow");
         $target[0][2].value = "";
