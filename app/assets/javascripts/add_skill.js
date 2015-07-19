@@ -32,23 +32,23 @@ function formatCurrentDateTime (date) {
   var seconds = date.getSeconds().toString();
 
   if (parseInt(month, 10) < 10) {
-    month = "0" + month
+    month = "0" + month;
   }
 
   if (parseInt(day, 10) < 10) {
-    day = "0" + day
+    day = "0" + day;
   }
 
   if (parseInt(hours, 10) < 10) {
-    hours = "0" + hours
+    hours = "0" + hours;
   }
 
   if (parseInt(minutes, 10) < 10) {
-    minutes = "0" + minutes
+    minutes = "0" + minutes;
   }
 
   if (parseInt(seconds, 10) < 10) {
-    seconds = "0" + seconds
+    seconds = "0" + seconds;
   }
 
   return year + "/" + month + "/" + day + " " + hours + ":" + minutes + ":" + seconds;
@@ -65,7 +65,7 @@ function formatVerticalTabsContentLink (skill) {
 }
 
 function formatVerticalTabsContentDiv (skill) {
-  var date = new Date;
+  var date = new Date();
   return "<div id='" + skill.id.toString() + "' class='js-vertical-tab-content vertical-tab-content'>" +
             "Current streak: " + skill.current_streak.toString() + "<br><br>" +
             "Longest streak: " + skill.longest_streak.toString() + "<br><br>" +
