@@ -38,7 +38,8 @@
     <%= f.submit "add" %>
   <% end %>
 <% else %>
-  <%= link_to "Sign in or sign up", new_user_session_path %>
+  <blockquote>"After a few days you'll have a chain. Just keep at it and the chain will grow longer every day. You'll like seeing that chain, especially when you get a few weeks under your belt. Your only job next is to not break the chain." - Jerry Seinfeld</blockquote>
+  <%= link_to "Sign in or sign up", new_user_session_path, :class => "auth" %>
 <% end %>
 
 <script>
