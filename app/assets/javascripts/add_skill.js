@@ -15,14 +15,13 @@ function addSkill () {
         $('.vertical-tab-content-container').append(formatVerticalTabsContentDiv(response));
         table();
         $("a[rel=" + response.id.toString() + "]").click();
-        $('.vertical-tabs').animate({ scrollTop: $(document).height() }, "slow");
+        $('.vertical-tabs').animate({ scrollTop: $(".vertical-tabs").get(0).scrollHeight }, "slow");
         $target[0][2].value = "";
         countdown();
       });
     }
   });
 }
-
 function formatCurrentDateTime (date) {
   var year = date.getFullYear().toString();
   var month = (date.getMonth() + 1).toString();
