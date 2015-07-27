@@ -146,7 +146,7 @@
     visibility: visible;
   }
 
-  .modal-state:checked + .modal-fade-screen .modal-inner {
+  .modal-state:checked + .modal-fade-screen .modal-1-inner .modal-2-inner {
     top: 0.5em;
   }
 }
