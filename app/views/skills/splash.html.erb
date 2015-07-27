@@ -1,0 +1,36 @@
+<div class="splash-container">
+  <blockquote>"After a few days you'll have a chain. Just keep at it and the chain will grow longer every day. You'll like seeing that chain, especially when you get a few weeks under your belt. Your only job next is to not break the chain." - Jerry Seinfeld</blockquote>
+
+  <span class="auth">
+    <%= link_to "Sign in", {}, class: "sign-in-link" %> or <%= link_to " sign up", {}, class: "sign-up-link" %>
+  </span>
+
+  <div class="modal">
+    <label for="modal-1">
+      <div class="modal-1-trigger"></div>
+    </label>
+    <input class="modal-state" id="modal-1" type="checkbox" />
+    <div class="modal-fade-screen">
+      <div class="modal-1-inner">
+        <div class="modal-close" for="modal-1"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal">
+    <label for="modal-2">
+      <div class="modal-2-trigger"></div>
+    </label>
+    <input class="modal-state" id="modal-2" type="checkbox" />
+    <div class="modal-fade-screen">
+      <div class="modal-2-inner">
+        <div class="modal-close" for="modal-2"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  getAuth();
+  modal();
+</script>
