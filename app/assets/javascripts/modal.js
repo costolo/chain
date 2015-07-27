@@ -1,4 +1,4 @@
-$(function() {
+function modal () {
   $("#modal-1").on("change", function() {
     if ($(this).is(":checked")) {
       $("body").addClass("modal-open");
