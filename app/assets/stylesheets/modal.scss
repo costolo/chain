@@ -83,7 +83,7 @@
     }
   }
 
-  .modal-inner {
+  .modal-1-inner, .modal-2-inner {
     @include transition(opacity 0.25s ease);
     background: $modal-background;
     border-radius: $base-border-radius;
