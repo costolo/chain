@@ -204,6 +204,23 @@ textarea {
 .auth {
   text-align: center;
   width:100%;
+  display:inline-block;
+}
+
+.sign-in-link, .sign-up-link {
+  text-decoration:none;
+  font-weight:bold;
+  font-family:Raleway;
+}
+
+blockquote {
+  font-family:Oxygen;
+  font-size:20px;
+  text-align:center;
+}
+
+.splash-container {
+  margin:20% auto;
   display:block;
 }
 
