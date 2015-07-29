@@ -26,7 +26,7 @@
         <% else %>
           <%= skill.end_current_streak %>
         <% end %>
-        <%= link_to('Refresh', refresh_path(skill)) %>
+        <%= link_to('Refresh', refresh_path(skill), class: "refresh-link") %>
       </div>
     <% end %>
   </div>
