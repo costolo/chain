@@ -22,6 +22,7 @@ function addSkill () {
     }
   });
 }
+
 function formatCurrentDateTime (date) {
   var year = date.getFullYear().toString();
   var month = (date.getMonth() + 1).toString();
