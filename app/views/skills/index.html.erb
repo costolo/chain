@@ -22,7 +22,7 @@
         <%= "Longest streak: " + skill.longest_streak.to_s %><br><br>
         <% if skill.time_remaining? %>
           Time remaining: 
-          <%= content_tag(:span, :"data-countdown" => skill.expiration_date) {} %>
+          <%= content_tag(:span, :"data-countdown" => skill.expiration_date, class: "data" + skill.id.to_s) {} %>
         <% else %>
           <%= skill.end_current_streak %>
         <% end %>
