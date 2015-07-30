@@ -12,7 +12,6 @@ class Skill < ActiveRecord::Base
   def end_current_streak
     self.current_streak = 0
     self.save
-    "Chain broken"
   end
 
   def refresh_expiration_time
