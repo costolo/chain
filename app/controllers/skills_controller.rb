@@ -2,6 +2,7 @@ class SkillsController < ApplicationController
   def index
     @new_skill = Skill.new
     @first_link = true
+    @count = 1
     current_user ? (@skills = current_user.skills.order(:id)) : (redirect_to welcome_path)
   end
 
