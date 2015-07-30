@@ -18,13 +18,16 @@
     <% @skills.each do |skill| %>
       <a href="" class="js-vertical-tab-accordion-heading vertical-tab-accordion-heading is-active" rel="<%= skill.id %>"><%= skill.title %></a>
       <div id="<%= skill.id %>" class="js-vertical-tab-content vertical-tab-content">
-        <%= "Current streak: " + skill.current_streak.to_s %><br><br>
-        <%= "Longest streak: " + skill.longest_streak.to_s %><br><br>
+        Current streak: <span id="current<%= skill.id.to_s %>"><%= skill.current_streak.to_s %></span> <br><br>
+        Longest streak: <span id="longest<%= skill.id.to_s %>"><%= skill.longest_streak.to_s %></span> <br><br>
         <% if skill.time_remaining? %>
-          Time remaining: 
-          <%= content_tag(:span, :"data-countdown" => skill.expiration_date, class: "data" + skill.id.to_s) {} %>
+          <span class="time-remaining<%= skill.id.to_s %>">Time remaining:</span>
+          <%= content_tag(:span, :"data-countdown" => skill.expiration_date, 
+          class: "data" + skill.id.to_s) {} %>
         <% else %>
-          <%= skill.end_current_streak %>
+          <% skill.end_current_streak %>
+          <span class="time-remaining<%= skill.id.to_s %>">Chain broken:</span>
+          <span class="data<%= skill.id.to_s %>"></span>
         <% end %>
         <%= link_to('Refresh', refresh_path(skill), class: "refresh-link") %>
       </div>
