@@ -9,20 +9,23 @@ function refresh () {
     var $timeRemainingSpan = $(".time-remaining" + id);
     var longest = parseInt($("#longest" + id).text(), 10);
     var current = parseInt($("#current" + id).text(), 10);
-    
-    $.ajax({
-      url: url,
-      type: "get"
-    }).done(function(response) {
-      if ($timeRemainingSpan.text() === "Chain broken:") {
-        $timeRemainingSpan.hide().html("Time remaining: ").fadeIn("slow");
-        $dateSpan.hide().attr("data-countdown", formatCurrentDateTime(dateTimeIn24Hours)).fadeIn("slow");
-      } else {
-        $dateSpan.data("countdown", formatCurrentDateTime(dateTimeIn24Hours)).hide().fadeIn("slow");
-      }
-      incrementStreak(current, longest, id);
-      countdown();
-    });
+    if (checkTimeElapsed(id) > 12) {
+      alert("Give it some time, come back after " + (checkTimeElapsed(id) - 12).toString() + " hours.");
+    } else {
+      $.ajax({
+        url: url,
+        type: "get"
+      }).done(function(response) {
+        if ($timeRemainingSpan.text() === "Chain broken:") {
+          $timeRemainingSpan.hide().html("Time remaining: ").fadeIn("slow");
+          $dateSpan.hide().attr("data-countdown", formatCurrentDateTime(dateTimeIn24Hours)).fadeIn("slow");
+        } else {
+          $dateSpan.data("countdown", formatCurrentDateTime(dateTimeIn24Hours)).hide().fadeIn("slow");
+        }
+        incrementStreak(current, longest, id);
+        countdown();
+      });
+    }
   });
 }
 
@@ -33,4 +36,9 @@ function incrementStreak(current, longest, id) {
     $("#current" + id).hide().html((current + 1).toString()).fadeIn("slow");
     $("#longest" + id).hide().html((current + 1).toString()).fadeIn("slow");
   }
+}
+
+function checkTimeElapsed(id) {
+  var hours = parseInt($(".data" + id).text().substr(0,2), 10);
+  return hours;
 }
