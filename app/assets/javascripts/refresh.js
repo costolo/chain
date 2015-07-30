@@ -25,3 +25,12 @@ function refresh () {
     });
   });
 }
+
+function incrementStreak(current, longest, id) {
+  if(current < longest) {
+    $("#current" + id).html((current + 1).toString());
+  } else if (current === longest) {
+    $("#current" + id).html((current + 1).toString());
+    $("#longest" + id).html((current + 1).toString());
+  }
+}
