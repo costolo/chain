@@ -14,6 +14,13 @@ function refresh () {
       url: url,
       type: "get"
     }).done(function(response) {
+      if ($timeRemainingSpan.text() === "Chain broken:") {
+        $timeRemainingSpan.html("Time remaining: ");
+        $dateSpan.attr("data-countdown", formatCurrentDateTime(dateTimeIn24Hours));
+      } else {
+        $dateSpan.data("countdown", formatCurrentDateTime(dateTimeIn24Hours));
+      }
+      incrementStreak(current, longest, id);
       countdown();
     });
   });
