@@ -7,7 +7,7 @@ function table () {
 
     $(".js-vertical-tab-content").hide();
     var activeTab = $(this).attr("rel");
-    $("#"+activeTab).show();
+    $("#"+activeTab).fadeIn(750);
 
     $(".js-vertical-tab").removeClass("is-active");
     $(this).addClass("is-active");

@@ -15,10 +15,10 @@ function refresh () {
       type: "get"
     }).done(function(response) {
       if ($timeRemainingSpan.text() === "Chain broken:") {
-        $timeRemainingSpan.html("Time remaining: ");
-        $dateSpan.attr("data-countdown", formatCurrentDateTime(dateTimeIn24Hours));
+        $timeRemainingSpan.hide().html("Time remaining: ").fadeIn("slow");
+        $dateSpan.hide().attr("data-countdown", formatCurrentDateTime(dateTimeIn24Hours)).fadeIn("slow");
       } else {
-        $dateSpan.data("countdown", formatCurrentDateTime(dateTimeIn24Hours));
+        $dateSpan.data("countdown", formatCurrentDateTime(dateTimeIn24Hours)).hide().fadeIn("slow");
       }
       incrementStreak(current, longest, id);
       countdown();
@@ -28,9 +28,9 @@ function refresh () {
 
 function incrementStreak(current, longest, id) {
   if(current < longest) {
-    $("#current" + id).html((current + 1).toString());
+    $("#current" + id).hide().html((current + 1).toString()).fadeIn("slow");
   } else if (current === longest) {
-    $("#current" + id).html((current + 1).toString());
-    $("#longest" + id).html((current + 1).toString());
+    $("#current" + id).hide().html((current + 1).toString()).fadeIn("slow");
+    $("#longest" + id).hide().html((current + 1).toString()).fadeIn("slow");
   }
 }
