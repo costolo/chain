@@ -17,10 +17,12 @@ function refresh() {
         type: "get"
       }).done(function(response) {
         if ($timeRemainingSpan.text() === "Chain broken:") {
-          $timeRemainingSpan.hide().html("Time remaining: ").fadeIn("slow");
-          $dateSpan.hide().attr("data-countdown", formatCurrentDateTime(dateTimeIn24Hours)).fadeIn("slow");
+          $("#current" + id).hide().html("Current streak: 1 <br /><br />").fadeIn(300);
+          $("#longest" + id).hide().fadeIn(300);
+          $timeRemainingSpan.hide().html("Time remaining: ").fadeIn(300);
+          $dateSpan.hide().attr("data-countdown", formatCurrentDateTime(dateTimeIn24Hours)).fadeIn(300);
         } else {
-          $dateSpan.data("countdown", formatCurrentDateTime(dateTimeIn24Hours)).hide().fadeIn("slow");
+          $dateSpan.data("countdown", formatCurrentDateTime(dateTimeIn24Hours)).hide().fadeIn(300);
         }
         incrementStreak(current, longest, id);
         countdown();
@@ -31,10 +33,10 @@ function refresh() {
 
 function incrementStreak(current, longest, id) {
   if(current < longest) {
-    $("#current" + id).hide().html((current + 1).toString()).fadeIn("slow");
+    $("#current" + id).hide().html((current + 1).toString()).fadeIn(300);
   } else if (current === longest) {
-    $("#current" + id).hide().html((current + 1).toString()).fadeIn("slow");
-    $("#longest" + id).hide().html((current + 1).toString()).fadeIn("slow");
+    $("#current" + id).hide().html((current + 1).toString()).fadeIn(300);
+    $("#longest" + id).hide().html((current + 1).toString()).fadeIn(300);
   }
 }
 
