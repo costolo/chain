@@ -6,13 +6,15 @@
   <div class="vertical-tabs-container">
     <div class="vertical-tabs">
       <% @skills.each do |skill| %>
-        <% if @first_link %>
-          <a href="javascript:void(0)" class="js-vertical-tab vertical-tab is-active" rel="<%= skill.id %>"><%= @count.to_s + ". " + skill.title %></a>
-          <% @first_link = false %>
-        <% else %>
-          <a href="javascript:void(0)" class="js-vertical-tab vertical-tab" rel="<%= skill.id %>"><%= @count.to_s + ". " + skill.title %></a>
-        <% end %>
-        <% @count += 1 %>
+        <div class="skill-tab">
+          <% if @first_link %>
+            <a href="javascript:void(0)" class="js-vertical-tab vertical-tab is-active" rel="<%= skill.id %>"><%= @count.to_s + ". " + skill.title %></a>
+            <% @first_link = false %>
+          <% else %>
+            <a href="javascript:void(0)" class="js-vertical-tab vertical-tab" rel="<%= skill.id %>"><%= @count.to_s + ". " + skill.title %></a>
+          <% end %>
+          <% @count += 1 %>
+        </div>
       <% end %>
     </div>
 
