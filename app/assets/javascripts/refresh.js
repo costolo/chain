@@ -1,4 +1,4 @@
-function refresh () {
+function refresh() {
   $(".refresh-link").on("click", function(event) {
     event.preventDefault();
     var $target = $(event.target);
