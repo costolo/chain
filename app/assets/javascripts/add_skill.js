@@ -24,39 +24,29 @@ function addSkill () {
 }
 
 function formatCurrentDateTime (date) {
-  var year = date.getFullYear().toString();
-  var month = (date.getMonth() + 1).toString();
-  var day = (date.getDate() + 1).toString();
-  var hours = date.getHours().toString();
-  var minutes = date.getMinutes().toString();
-  var seconds = date.getSeconds().toString();
+  var datetime_arr = [
+    date.getFullYear().toString(),
+    (date.getMonth() + 1).toString(),
+    (date.getDate() + 1).toString(),
+    date.getHours().toString(),
+    date.getMinutes().toString(),
+    date.getSeconds().toString()
+  ];
+  
+  datetime_arr.forEach(function(x) {
+    if (parseInt(x, 10) < 10) {
+      x = "0" + x;
+    }
+  });
 
-  if (parseInt(month, 10) < 10) {
-    month = "0" + month;
-  }
-
-  if (parseInt(day, 10) < 10) {
-    day = "0" + day;
-  }
-
-  if (parseInt(hours, 10) < 10) {
-    hours = "0" + hours;
-  }
-
-  if (parseInt(minutes, 10) < 10) {
-    minutes = "0" + minutes;
-  }
-
-  if (parseInt(seconds, 10) < 10) {
-    seconds = "0" + seconds;
-  }
-
-  return year + "/" + month + "/" + day + " " + hours + ":" + minutes + ":" + seconds;
+  return datetime_arr[0] + "/" + datetime_arr[1] + "/" + datetime_arr[2] + " " + 
+  datetime_arr[3] + ":" + datetime_arr[4] + ":" + datetime_arr[5];
 }
 
 function formatVerticalTabs (skill) {
+  var count = $(".vertical-tabs").children().size() + 1;
   return "<a href='javascript:void(0)' class='js-vertical-tab vertical-tab' rel='" + 
-          skill.id.toString() + "'>" + skill.title + "</a>";
+          skill.id.toString() + "'>" + count + ". " + skill.title + "</a>";
 }
 
 function formatVerticalTabsContentLink (skill) {
