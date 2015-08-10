@@ -4,6 +4,8 @@ function getAuth() {
     type: "get",
   }).done(function(signin_response) {
     $(".modal-1-inner").append(signin_response);
+  }).fail(function(error) {
+    console.log(error);
   });
 
   $.ajax({
@@ -11,6 +13,8 @@ function getAuth() {
     type: "get"
   }).done(function(signup_response) {
     $(".modal-2-inner").append(signup_response);
+  }).fail(function(error) {
+    console.log(error);
   });
 
   $(".sign-in-link").click(function(event) {
