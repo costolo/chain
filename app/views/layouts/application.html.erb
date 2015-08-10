@@ -10,6 +10,14 @@
 <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+  <script>
+    $(function() {
+      setTimeout(function() {
+        $(".notice").fadeTo(1000, 0);
+        $(".alert").fadeTo(1000, 0);
+      }, 1000);
+    });
+  </script>
 <%= yield %>
 
 </body>
