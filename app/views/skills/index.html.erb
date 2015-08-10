@@ -1,8 +1,9 @@
-<h1><%= current_user.name %></h1>
-
-<p><%= link_to "Sign out", destroy_user_session_path, method: :delete %></p>
-
 <div class="container">
+  <div class="nav">
+    <p class="name"><%= current_user.name %> - </p>
+    <p class="signout"><%= link_to "sign out", destroy_user_session_path, method: :delete, class: "signout" %></p>
+  </div>
+
   <div class="vertical-tabs-container">
     <div class="vertical-tabs">
       <% @skills.each do |skill| %>
