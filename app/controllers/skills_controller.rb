@@ -29,6 +29,9 @@ class SkillsController < ApplicationController
   end
 
   def destroy
+    skill = Skill.find(params[:format])
+    skill.destroy
+    redirect_to root_path
   end
 
   private
