@@ -59,7 +59,7 @@ function formatVerticalTabsContentDiv (skill) {
   return "<div id='" + skill.id.toString() + "' class='js-vertical-tab-content vertical-tab-content'>" +
             "Current streak: " + skill.current_streak.toString() + "<br><br>" +
             "Longest streak: " + skill.longest_streak.toString() + "<br><br>" +
-            "Time remaining: <span data-countdown='" + formatCurrentDateTime(date) + "'></span>" +
+            "Time remaining: <span class='data" + skill.id.toString() + "' data-countdown='" + formatCurrentDateTime(date) + "'></span>" +
             "<a class='refresh-link' href='/refresh." + skill.id.toString() + "'> Refresh</a></div>";
 }
 
