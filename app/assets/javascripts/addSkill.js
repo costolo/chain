@@ -45,7 +45,8 @@ function formatCurrentDateTime (date) {
 
 function formatVerticalTabs (skill) {
   var count = $(".vertical-tabs").children().size() + 1;
-  return "<a href='javascript:void(0)' class='js-vertical-tab vertical-tab' rel='" + 
+  return "<a class='delete-link' rel='nofollow' data-method='delete' href='/skills/" + skill.id + "'>X</a>" + 
+          "<a href='javascript:void(0)' class='js-vertical-tab vertical-tab' rel='" + 
           skill.id.toString() + "'>" + count + ". " + skill.title + "</a>";
 }
 
