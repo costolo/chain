@@ -1,5 +1,5 @@
 function refresh() {
-  $(".vertical-tab-content-container").on("click", ".refresh-link", function(event) {
+  $(document).on("click", ".refresh-link", function(event) {
     event.preventDefault();
     var $target = $(event.target);
     var url = $target.attr("href");
