@@ -37,7 +37,7 @@
               <span class="time-remaining<%= skill.id.to_s %>">Chain broken:</span>
               <span class="data<%= skill.id.to_s %>"></span>
             <% end %>
-            <%= link_to('Refresh', refresh_path(skill), class: "refresh-link") %>
+            <%= link_to('Refresh', skill_refresh_path(skill), class: "refresh-link") %>
           </div>
         </div>
       <% end %>
