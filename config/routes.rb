@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   end
 
   root 'skills#index'
+  get 'home' => 'skills#index', as: 'home'
   get 'welcome' => 'skills#splash', as: 'welcome'
 end
