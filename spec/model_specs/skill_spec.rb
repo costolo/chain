@@ -32,8 +32,7 @@ describe Skill do
     expect(streak_test.longest_streak).to eq 8
   end
 
-  xit "can give the number of seconds remaining after creation" do
-    wait 5
-    expect(valid_skill.time_remaining).to eq false 
+  it "returns true if the skill has time remaining" do
+    expect(valid_skill.time_remaining?).to be true
   end
 end
