@@ -3,9 +3,9 @@ class SkillsController < ApplicationController
     @new_skill = Skill.new
     @first_link = true
     @count = 1
-    current_user ? (@skills = current_user.skills.order(:id)) : (redirect_to welcome_path)
+    current_user ? (@skills = current_user.skills.order(:id)) : (redirect_to(welcome_path) && return)
     respond_to do |format|
-      format.html {render :index}
+      format.html { render :index }
       format.json {
         render json: @skills.to_json(methods: [:time_remaining?, :expiration_date])
       }
